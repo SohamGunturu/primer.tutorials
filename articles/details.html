@@ -84,7 +84,7 @@
 
       
 
-      </header><div class="row">
+      </header><script src="details_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Technical Details</h1>
@@ -102,13 +102,13 @@
 <h2 id="package-locations">Package locations<a class="anchor" aria-label="anchor" href="#package-locations"></a>
 </h2>
 <p>Keep in mind that there are (at least) two versions of <strong>primer.tutorials</strong> installed on your machine. In my case, we have</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="op">&gt;</span> <span class="ex">/Library/Frameworks/R.framework/Versions/4.1/Resources/library</span></a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">&gt;</span> <span class="ex">/Library/Frameworks/R.framework/Versions/4.1/Resources/library</span></span></code></pre></div>
 <p>and</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="op">&gt;</span> <span class="ex">/Users/dkane/Library/Caches/org.R-project.R/R/renv/library/primer.tutorials-07f29d85/R-4.2/aarch64-apple-darwin20</span><span class="st">"</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="op">&gt;</span> <span class="ex">/Users/dkane/Library/Caches/org.R-project.R/R/renv/library/primer.tutorials-07f29d85/R-4.2/aarch64-apple-darwin20</span><span class="st">"</span></span></code></pre></div>
 <p>The first is the default location for packages. This is where things go unless you do something special. The second is installed by <code>renv</code>, which was used within the <code>primer.tutorials</code> project. When you are working in your <code>primer.tutorials</code> project, as you generally will, the <code>renv</code> version of the <strong>primer.tutorials</strong> library is what you will be using. You can check this by running <code><a href="https://rdrr.io/r/base/libPaths.html" class="external-link">.libPaths()</a></code>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="op">&gt;</span><span class="st"> </span><span class="kw">.libPaths</span>()</a>
-<a class="sourceLine" id="cb3-2" title="2">[<span class="dv">1</span>] <span class="st">"/Users/dkane/Library/Caches/org.R-project.R/R/renv/library/primer.tutorials-07f29d85/R-4.2/aarch64-apple-darwin20"</span></a>
-<a class="sourceLine" id="cb3-3" title="3">[<span class="dv">2</span>] <span class="st">"/Library/Frameworks/R.framework/Versions/4.2-arm64/Resources/library"</span> </a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">.libPaths</span>()</span>
+<span id="cb3-2"><a href="#cb3-2"></a>[<span class="dv">1</span>] <span class="st">"/Users/dkane/Library/Caches/org.R-project.R/R/renv/library/primer.tutorials-07f29d85/R-4.2/aarch64-apple-darwin20"</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>[<span class="dv">2</span>] <span class="st">"/Library/Frameworks/R.framework/Versions/4.2-arm64/Resources/library"</span> </span></code></pre></div>
 <p>Whenever you <code><a href="https://rdrr.io/r/base/library.html" class="external-link">library()</a></code> a package, R looks through, in order, the values returned by <code><a href="https://rdrr.io/r/base/libPaths.html" class="external-link">.libPaths()</a></code>. <strong>renv</strong> sets things up so that the first item is its collection of packages. Note that these are placed in a weird location, including a temp directory name <code>primer.tutorials-07f29d85</code>. I am not sure how <strong>renv</strong> decided to create a new one of these. It does not delete the old ones. In the case of major breakdowns, deleting these directories by hand can fix things.</p>
 </div>
 <div class="section level2">
@@ -164,55 +164,55 @@
 <p>At the time of writing, there are 4 add ins: the Tutorial Code Exercise, the Tutorial Written Exercise (with answer), the Tutorial Written Exercise (no answer), and the Format Tutorial Chunk Labels add in. Each of these will reformat your file to accomplish a task.</p>
 <p>You can run an addin either through a keyboard shortcut (Tools -&gt; Modify Keyboard Shortcuts) or you can go to the Addins menu and run the addin from there.</p>
 <p>The Tutorial Code Exercise addin creates a new code exercise by adding to following code at your cursor location:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb7-1" title="1"><span class="fu">### Exercise 1</span></a>
-<a class="sourceLine" id="cb7-2" title="2"></a>
-<a class="sourceLine" id="cb7-3" title="3"></a>
-<a class="sourceLine" id="cb7-4" title="4"><span class="bn">```{r rstudio-setting-ques-1, exercise = TRUE}</span></a>
-<a class="sourceLine" id="cb7-5" title="5"></a>
-<a class="sourceLine" id="cb7-6" title="6"><span class="bn">```</span></a>
-<a class="sourceLine" id="cb7-7" title="7"></a>
-<a class="sourceLine" id="cb7-8" title="8">&lt;button onclick = "transfer_code(this)"&gt;Copy previous code&lt;/button&gt;</a>
-<a class="sourceLine" id="cb7-9" title="9"></a>
-<a class="sourceLine" id="cb7-10" title="10"><span class="bn">```{r rstudio-setting-ques-1-hint, eval = FALSE}</span></a>
-<a class="sourceLine" id="cb7-11" title="11"></a>
-<a class="sourceLine" id="cb7-12" title="12"><span class="bn">```</span></a>
-<a class="sourceLine" id="cb7-13" title="13"></a>
-<a class="sourceLine" id="cb7-14" title="14">###</a>
-<a class="sourceLine" id="cb7-15" title="15"></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">### Exercise 1</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a></span>
+<span id="cb7-3"><a href="#cb7-3"></a></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="bn">```{r rstudio-setting-ques-1, exercise = TRUE}</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="bn">```</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a></span>
+<span id="cb7-8"><a href="#cb7-8"></a>&lt;button onclick = "transfer_code(this)"&gt;Copy previous code&lt;/button&gt;</span>
+<span id="cb7-9"><a href="#cb7-9"></a></span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="bn">```{r rstudio-setting-ques-1-hint, eval = FALSE}</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a></span>
+<span id="cb7-12"><a href="#cb7-12"></a><span class="bn">```</span></span>
+<span id="cb7-13"><a href="#cb7-13"></a></span>
+<span id="cb7-14"><a href="#cb7-14"></a>###</span>
+<span id="cb7-15"><a href="#cb7-15"></a></span></code></pre></div>
 <!-- DK: Generate these (and other) images automatically? -->
 <p>This exercise will look like this once it’s knitted:</p>
 <p><img src="images/tutorial-code-exercise.png" width="75%"></p>
 <p>The Tutorial Written Exercise addins work the same way. The only difference is that they create written prompt boxes rather than code input boxes.</p>
 <p>The Tutorial Written Exercise (with answer) addin adds this code to your R Markdown file and creates a prompt box with 6 rows. You can change the number of rows by changing the <code>rows</code> argument. Note that students are not allowed to retry since, if they could do so after seeing ou answer, the urge to just cheat would be tough to resist.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb8-1" title="1"><span class="fu">### Exercise 2</span></a>
-<a class="sourceLine" id="cb8-2" title="2"></a>
-<a class="sourceLine" id="cb8-3" title="3"></a>
-<a class="sourceLine" id="cb8-4" title="4"><span class="bn">```{r rstudio-setting-ques-2}</span></a>
-<a class="sourceLine" id="cb8-5" title="5"><span class="bn">question_text(NULL,</span></a>
-<a class="sourceLine" id="cb8-6" title="6"><span class="bn">    message = "Place correct answer here.",</span></a>
-<a class="sourceLine" id="cb8-7" title="7"><span class="bn">    answer(NULL, correct = TRUE),</span></a>
-<a class="sourceLine" id="cb8-8" title="8"><span class="bn">    allow_retry = FALSE,</span></a>
-<a class="sourceLine" id="cb8-9" title="9"><span class="bn">    incorrect = NULL,</span></a>
-<a class="sourceLine" id="cb8-10" title="10"><span class="bn">    rows = 6)</span></a>
-<a class="sourceLine" id="cb8-11" title="11"><span class="bn">```</span></a>
-<a class="sourceLine" id="cb8-12" title="12"></a>
-<a class="sourceLine" id="cb8-13" title="13">###</a>
-<a class="sourceLine" id="cb8-14" title="14"></a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">### Exercise 2</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a></span>
+<span id="cb8-3"><a href="#cb8-3"></a></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="bn">```{r rstudio-setting-ques-2}</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="bn">question_text(NULL,</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="bn">    message = "Place correct answer here.",</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="bn">    answer(NULL, correct = TRUE),</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="bn">    allow_retry = FALSE,</span></span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="bn">    incorrect = NULL,</span></span>
+<span id="cb8-10"><a href="#cb8-10"></a><span class="bn">    rows = 6)</span></span>
+<span id="cb8-11"><a href="#cb8-11"></a><span class="bn">```</span></span>
+<span id="cb8-12"><a href="#cb8-12"></a></span>
+<span id="cb8-13"><a href="#cb8-13"></a>###</span>
+<span id="cb8-14"><a href="#cb8-14"></a></span></code></pre></div>
 <p>The Tutorial Written Exercise (no answer) is the similar, but it just doesn’t have an <code>answer</code> field. It also allows for retry’s since there is no answer for a student to steal from.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb9-1" title="1"><span class="fu">### Exercise 3</span></a>
-<a class="sourceLine" id="cb9-2" title="2"></a>
-<a class="sourceLine" id="cb9-3" title="3"></a>
-<a class="sourceLine" id="cb9-4" title="4"><span class="bn">```{r rstudio-setting-ques-3}</span></a>
-<a class="sourceLine" id="cb9-5" title="5"><span class="bn">question_text(NULL,</span></a>
-<a class="sourceLine" id="cb9-6" title="6"><span class="bn">    answer(NULL, correct = TRUE),</span></a>
-<a class="sourceLine" id="cb9-7" title="7"><span class="bn">    allow_retry = TRUE,</span></a>
-<a class="sourceLine" id="cb9-8" title="8"><span class="bn">    try_again_button = "Edit Answer",</span></a>
-<a class="sourceLine" id="cb9-9" title="9"><span class="bn">    incorrect = NULL,</span></a>
-<a class="sourceLine" id="cb9-10" title="10"><span class="bn">    rows = 3)</span></a>
-<a class="sourceLine" id="cb9-11" title="11"><span class="bn">```</span></a>
-<a class="sourceLine" id="cb9-12" title="12"></a>
-<a class="sourceLine" id="cb9-13" title="13">###</a>
-<a class="sourceLine" id="cb9-14" title="14"></a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">### Exercise 3</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a></span>
+<span id="cb9-3"><a href="#cb9-3"></a></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="bn">```{r rstudio-setting-ques-3}</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="bn">question_text(NULL,</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="bn">    answer(NULL, correct = TRUE),</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="bn">    allow_retry = TRUE,</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a><span class="bn">    try_again_button = "Edit Answer",</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a><span class="bn">    incorrect = NULL,</span></span>
+<span id="cb9-10"><a href="#cb9-10"></a><span class="bn">    rows = 3)</span></span>
+<span id="cb9-11"><a href="#cb9-11"></a><span class="bn">```</span></span>
+<span id="cb9-12"><a href="#cb9-12"></a></span>
+<span id="cb9-13"><a href="#cb9-13"></a>###</span>
+<span id="cb9-14"><a href="#cb9-14"></a></span></code></pre></div>
 <p>They look the similar once they’re knitted.</p>
 <p><img src="images/written-exercise.png" width="75%"></p>
 <p>Finally, the “Format Tutorial Chunk Labels” addin formats the tutorial so that it automatically has the correct numbering. That means that you can add in a new exercise at the beginning of the tutorial and reformat it without having to manually change every single chunk label or exercise header.</p>
